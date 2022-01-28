@@ -369,6 +369,11 @@ html {
   overflow-y: scroll;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .header {
   background-color: #2d3651;
   background-image: url(../img/img-header.png);
@@ -383,24 +388,25 @@ html {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  min-width: 100%;
 }
 
 .header-content {
   position: relative;
   z-index: 1;
-  width: 100%;
+  width: inherit;
   margin-top: -41px;
 }
 
-.header-content__conteiner,
-.header-menu__conteiner {
+.header-content__container,
+.header-menu__container {
   max-width: 1340px;
   padding-left: 20px;
   padding-right: 20px;
   margin: 0 auto;
 }
 
-.header-menu__conteiner {
+.header-menu__container {
   display: grid;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -494,13 +500,8 @@ html {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 250px;
-  height: 60px;
   padding: 0.2em 1em 0.1em 1em;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 2px solid #ffffff;
   letter-spacing: 0.1em;
-  font-size: 1.125rem;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -518,21 +519,102 @@ html {
 }
 
 .skills {
-  background-color: #fafcfa;
+  padding: 10px;
+  min-width: 100%;
+  max-height: 100vh;
+  background-position: 50% 50%;
 }
 
-.skills__conteiner {
+.skills__container {
   display: grid;
   gap: 10px;
   grid-template-areas: "a1 a1 a2 a3" "a4 a5 a5 a6" "a7 a8 a9 a6";
+  position: relative;
+}
+
+.skills__actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 .skills-item {
-  background-color: coral;
-  height: 33.33vh;
+  background-color: rgba(45, 54, 81, 0.8);
+  position: relative;
+  min-height: calc(33.3333vh - 13.33333px);
+  min-width: 25%;
+  overflow: hidden;
 }
 
-.skills-item:nth-child(1) {
+.skills-item__image {
+  background-position: center;
+}
+
+.skills-item__link {
+  display: block;
+  position: absolute;
+  inset: 0;
+}
+
+.skills-item__title {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 20px;
+  letter-spacing: 2px;
+  color: #f7f4f4;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.skills-item__overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(45, 54, 81, 0.8);
+}
+
+.skills-item__link:hover {
+  -webkit-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.skills-item__link:hover .skills-item__overlay {
+  background-color: rgba(45, 54, 81, 0.95);
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.skills-item__link:hover .skills-item__title {
+  color: #d66926;
+  -webkit-transform: scale(0.9);
+      -ms-transform: scale(0.9);
+          transform: scale(0.9);
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.skills-item:nth-of-type(1) {
   grid-area: a1;
 }
 
@@ -566,4 +648,20 @@ html {
 
 .skills-item:nth-of-type(9) {
   grid-area: a9;
+}
+
+.btn--light {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid #ffffff;
+  width: 250px;
+  height: 60px;
+  font-size: 1.125rem;
+}
+
+.btn--primary {
+  background-color: rgba(45, 54, 81, 0.8);
+  border: 2px solid #2d3651;
+  width: 350px;
+  height: 60px;
+  font-size: 1.125rem;
 }
